@@ -1,14 +1,15 @@
 import React from 'react';
-import Link from "next/link";
 
 import css from './HeaderComponent.module.css'
+import NavLinkClientComponent from "@/components/NavLinkClientComponent/NavLinkClientComponent";
 
 const HeaderComponent = () => {
     return (
         <div className={css.header}>
-            <Link href={'/'}>Users</Link>
-            <Link href={'/posts'}>Posts</Link>
-            <Link href={'/comments'}>Comments</Link>
+            <NavLinkClientComponent path={'/'}>Users</NavLinkClientComponent>
+            <NavLinkClientComponent path={'/posts'}>Posts</NavLinkClientComponent>
+            <NavLinkClientComponent path={'/comments'}>Comments</NavLinkClientComponent>
+            <NavLinkClientComponent path={'/meals'}>Meals</NavLinkClientComponent>
         </div>
     );
 };

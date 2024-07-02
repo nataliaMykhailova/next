@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {FC} from 'react';
 
 import CommentComponent from "@/components/CommentComponent/CommentComponent";
+import {commentsService} from "@/services/commentsService";
 
-const CommentsComponent = async () => {
-    const comments = await fetch('https://jsonplaceholder.typicode.com/comments')
-        .then(value => value.json());
+const CommentsComponent:FC = async () => {
+    const comments = await commentsService.getAll();
     return (
         <div>
             {

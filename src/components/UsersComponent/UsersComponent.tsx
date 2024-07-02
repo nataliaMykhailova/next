@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {FC} from 'react';
 
 import UserComponent from "@/components/UserComponent/UserComponent";
+import {userServices} from "@/services/userServices";
 
-const UsersComponent = async () => {
-    const users = await fetch('https://jsonplaceholder.typicode.com/users')
-        .then(value => value.json());
+const UsersComponent:FC = async () => {
+    const users = await userServices.getAll();
+    console.log(users);
     return (
         <div>
             {

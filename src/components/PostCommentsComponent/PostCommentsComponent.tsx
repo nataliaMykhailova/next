@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {FC} from 'react';
 
 import CommentComponent from "@/components/CommentComponent/CommentComponent";
+import {postServices} from "@/services/postsService";
+interface IProps{
+    id: string
+}
 
-const PostsCommentsComponent:({id}: { id: string }) => Promise<React.JSX.Element> = async ({id}) => {
-    const comments = await fetch(`https://jsonplaceholder.typicode.com//comments?postId=${id}`)
-        .then(value => value.json());
+const PostsCommentsComponent:FC<IProps> = async ({id}) => {
+    const comments = await postServices.getCommentsOfPost(+id)
     return (
         <div>
             {

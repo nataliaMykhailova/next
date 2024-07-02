@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {FC} from 'react';
 
 import PostComponent from "@/components/PostComponent/PostComponent";
-const UserPostsComponent:({id}: { id: string }) => Promise<React.JSX.Element> = async ({id}) => {
-    const posts = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${id}`)
-        .then(value => value.json());
+import {userServices} from "@/services/userServices";
+
+interface IProps{
+    id: string
+}
+const UserPostsComponent:FC<IProps> =async ({id}) => {
+    const posts = await userServices.getPostsOfUser(+id);
     return (
         <div>
             {
